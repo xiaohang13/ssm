@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nfmedia.carshop.mapper.ProductMapper">
+    <!-- 查询所有商品信息 -->
+    <select id="getProductList" resultMap="getProductList">
+      SELECT * FROM `products`,`parts` WHERE products.part_id = parts.id;
+    </select>
+    
+    <resultMap id="getProductList" type="product">
+        <id property="id" column="id" />
+        <result property="productName" column="product_name" />
+        <result property="productPrice" column="product_price" />
+        <result property="productQuentity" column="product_quentity" />
+        <result property="productImage" column="product_image" />
+        <association property="part" javaType="part">
+            <id property="id" column="id"/>
+            <result property="partName" column="part_name"/>
+        </association>
+    </resultMap>
+</mapper>
