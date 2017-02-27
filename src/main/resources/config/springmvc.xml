@@ -28,5 +28,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!-- 配置允许跨域 -->
+
 
 </beans>
